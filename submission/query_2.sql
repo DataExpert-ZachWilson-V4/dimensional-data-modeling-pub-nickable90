@@ -1,4 +1,4 @@
-INSERT INTO actors
+INSERT INTO nikhilsahni.actors
 /*
   Since each actor can have more than one films in a given year, with this query 
   we are creating just one record for that actor for a given year and putting all the 
