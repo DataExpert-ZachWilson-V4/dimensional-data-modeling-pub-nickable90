@@ -1,5 +1,5 @@
 INSERT INTO
-  actors_history_scd
+  nikhilsahni.actors_history_scd
 WITH
   lagged AS (
     SELECT
@@ -81,6 +81,7 @@ WITH
   )
 SELECT
   actor,
+  actor_id,
   MAX(quality_class) AS quality_class,
   MAX(is_active) AS is_active,
   MIN(current_year) AS start_date,
