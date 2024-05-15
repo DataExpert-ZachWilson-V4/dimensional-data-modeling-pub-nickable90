@@ -1,4 +1,3 @@
-
 INSERT INTO actors
 /*
   Since each actor can have more than one films in a given year, with this query 
@@ -15,7 +14,7 @@ WITH
       AVG(rating) AS avg_rating,
       YEAR
     FROM
-      bootcamp.actor_films
+      actor_films
     WHERE
       YEAR = 1914
     GROUP BY
@@ -44,21 +43,30 @@ WITH
     FROM
       actor_recent_rating
   ),
+  /*
+  Here we are pulling everything from last year table so that we can join it with this year.
+  Please note that for the first run last year data does not exist.
+  */
   last_year AS (
     SELECT
       *
     FROM
-      nikhilsahni.actors
+      actors
     WHERE
       current_year = 1913
   )
+  
 SELECT
+  -- COALESCING to make sure we get these values from either of the two tables
   COALESCE(ty.actor, ly.actor) AS actor,
   COALESCE(ty.actor_id, ly.actor_id) AS actor_id,
   CASE
+  -- When actor does not have any record this year
     WHEN ty.year IS NULL THEN ly.films
+  -- When actor have data this year but not last year
     WHEN ty.year IS NOT NULL
     AND ly.current_year IS NULL THEN ty.films
+  -- When actor have data last year and this year
     WHEN ty.year IS NOT NULL
     AND ly.current_year IS NOT NULL THEN ty.films || ly.films
   END AS films,
