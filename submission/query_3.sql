@@ -1,7 +1,7 @@
 /*
 This table tracks both quality_class and is_active dimensions with the same start_date and end_date
 */
-CREATE OR REPLACE TABLE actors_history_scd (
+CREATE OR REPLACE TABLE nikhilsahni.actors_history_scd (
   -- actor: Full name of the actor.
   actor VARCHAR,
   -- actor_id: Unique identifier of actor.
