@@ -1,5 +1,5 @@
 INSERT INTO
-  nikhilsahni.actors_history_scd
+  actors_history_scd
 WITH
   lagged AS (
     SELECT
@@ -20,7 +20,7 @@ WITH
       END AS is_active_last_year,
       current_year
     FROM
-      nikhilsahni.actors
+      actors
     WHERE
       current_year <= 1920
   ),
