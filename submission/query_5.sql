@@ -1,5 +1,5 @@
 INSERT INTO 
- actors_history_scd
+ nikhilsahni.actors_history_scd
 WITH
   last_year_scd AS (
     SELECT
@@ -13,7 +13,7 @@ WITH
     SELECT
       *
     FROM
-      actors
+      nikhilsahni.actors
     WHERE
       current_year = 1921
   ),
