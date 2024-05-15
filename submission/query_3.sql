@@ -4,6 +4,8 @@ This table tracks both quality_class and is_active dimensions with the same star
 CREATE OR REPLACE TABLE actors_history_scd (
   -- actor: Full name of the actor.
   actor VARCHAR,
+  -- actor_id: Unique identifier of actor.
+  actor_id VARCHAR,
   -- quality_class: Category based on the Average rating for a given start_date and end_date.
   quality_class VARCHAR,
   -- is_active: Whether the actor is active and making the films for a given start_date and end_date.
