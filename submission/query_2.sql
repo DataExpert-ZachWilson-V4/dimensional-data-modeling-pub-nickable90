@@ -14,7 +14,7 @@ WITH
       AVG(rating) AS avg_rating,
       YEAR
     FROM
-      actor_films
+      bootcamp.actor_films
     WHERE
       YEAR = 1914
     GROUP BY
@@ -51,7 +51,7 @@ WITH
     SELECT
       *
     FROM
-      actors
+      nikhilsahni.actors
     WHERE
       current_year = 1913
   )
