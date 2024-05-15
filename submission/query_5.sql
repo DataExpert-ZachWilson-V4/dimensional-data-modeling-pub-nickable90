@@ -20,6 +20,7 @@ WITH
   combined AS (
     SELECT
       COALESCE(ls.actor, ts.actor) AS actor,
+      COALESCE(ls.actor_id, ts.actor_id) AS actor_id,
       COALESCE(ls.start_date, ts.current_year) AS start_date,
       COALESCE(ls.end_date, ts.current_year) AS end_date,
       CASE
@@ -37,7 +38,7 @@ WITH
       1921 AS current_year
     FROM
       last_year_scd AS ls
-      FULL OUTER JOIN this_year_scd AS ts ON ls.actor = ts.actor
+      FULL OUTER JOIN this_year_scd AS ts ON ls.actor_id = ts.actor_id
       AND ls.end_date + 1 = ts.current_year
   ),
   both_changes AS (
@@ -56,6 +57,7 @@ WITH
   changes AS (
     SELECT
       actor,
+      actor_id,
       CASE
         WHEN both_change = 0 THEN ARRAY[
           CAST(
@@ -126,6 +128,7 @@ WITH
   )
 SELECT
   c.actor,
+  c.actor_id,
   arr.quality_class,
   arr.is_active,
   arr.start_date,
