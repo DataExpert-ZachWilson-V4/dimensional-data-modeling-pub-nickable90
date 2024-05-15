@@ -1,11 +1,11 @@
 INSERT INTO 
- actors_history_scd
+ nikhilsahni.actors_history_scd
 WITH
   last_year_scd AS (
     SELECT
       *
     FROM
-      actors_history_scd
+      nikhilsahni.actors_history_scd
     WHERE
       current_year = 1920
   ),
@@ -13,14 +13,13 @@ WITH
     SELECT
       *
     FROM
-      actors
+      nikhilsahni.actors
     WHERE
       current_year = 1921
   ),
   combined AS (
     SELECT
       COALESCE(ls.actor, ts.actor) AS actor,
-      COALESCE(ls.actor_id, ts.actor_id) AS actor_id,
       COALESCE(ls.start_date, ts.current_year) AS start_date,
       COALESCE(ls.end_date, ts.current_year) AS end_date,
       CASE
@@ -38,7 +37,7 @@ WITH
       1921 AS current_year
     FROM
       last_year_scd AS ls
-      FULL OUTER JOIN this_year_scd AS ts ON ls.actor_id = ts.actor_id
+      FULL OUTER JOIN this_year_scd AS ts ON ls.actor = ts.actor
       AND ls.end_date + 1 = ts.current_year
   ),
   both_changes AS (
@@ -57,7 +56,6 @@ WITH
   changes AS (
     SELECT
       actor,
-      actor_id,
       CASE
         WHEN both_change = 0 THEN ARRAY[
           CAST(
