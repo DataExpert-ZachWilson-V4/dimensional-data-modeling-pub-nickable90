@@ -1,7 +1,7 @@
 /*
 This is to create a cumulative design table, where we maintain the history of changing dimensions in a single column 
 as an array of arrays(or rows) in a single record. So that the latest partition or record can be used to pull the entire history.
-"films" in this table is an array that maintains rows of all the changing dimensions from different years.
+"films" in this table is an array that maintains rows of all the changing dimensions from different years
 */
 CREATE OR REPLACE TABLE nikhilsahni.actors (
   -- actor: Actor's full name.
