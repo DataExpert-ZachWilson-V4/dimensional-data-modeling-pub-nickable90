@@ -16,7 +16,7 @@ WITH
     FROM
       bootcamp.actor_films
     WHERE
-      YEAR = 1914
+      YEAR = 1914 AND actor_id IS NOT NULL
     GROUP BY
       actor,
       actor_id,
@@ -53,7 +53,7 @@ WITH
     FROM
       nikhilsahni.actors
     WHERE
-      current_year = 1913
+      current_year = 1913 AND actor_id IS NOT NULL
   )
   
 SELECT
