@@ -128,7 +128,6 @@ WITH
   )
 SELECT
   c.actor,
-  c.actor_id,
   arr.quality_class,
   arr.is_active,
   arr.start_date,
